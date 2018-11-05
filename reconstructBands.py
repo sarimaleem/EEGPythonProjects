@@ -1,11 +1,5 @@
 from pywt import wavedec
 from pywt import waverec
-import numpy as np
-
-
-test = sio.loadmat('testSegment.mat')
-test = test["d"]
-test = test[1, :]
 
 def rec(signal, delta = 1, theta = 1, alpha = 1, beta = 1, lowGamma = 1, midGamma = 0, highGamma = 0):
     coeffs = wavedec(signal, 'db4', level=6, axis=0)
@@ -23,4 +17,6 @@ def rec(signal, delta = 1, theta = 1, alpha = 1, beta = 1, lowGamma = 1, midGamm
     reconstructed = waverec(newCoeffs, 'db4')
     return reconstructed
 
-test2 = rec(test, lowGamma = 0)
+def denoise(signal):
+    signal = rec(signal, lowGamma=0)
+    return signal
