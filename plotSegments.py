@@ -6,9 +6,6 @@ def pltWavCoeffs(signal):
     coeffs = wavedec(signal, 'db4', level=6, axis=0)
     cA6, cD6, cD5, cD4, cD3, cD2, cD1 = coeffs
     
-    
-    
-    
     figure, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(nrows=6)
     
     ax1.plot(cA6)
