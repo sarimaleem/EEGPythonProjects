@@ -24,7 +24,7 @@ for file in os.listdir(directory):
     filename = os.fsdecode(file)
     os.chdir(r'positive_segments')
     sig = sio.loadmat(filename)
-    os.chdir(r'/Users/admin/.spyder-py3')
+    os.chdir(r'/Users/admin/rpsp')
     sig = sig["d"]
     sigList.append(sig)
     
