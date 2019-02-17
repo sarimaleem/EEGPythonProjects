@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
-from pywt import wavedec
+import scipy.io as sio
+import pywt
 
 def pltWavCoeffs(signal):
     
-    coeffs = wavedec(signal, 'db4', level=6, axis=0)
+    coeffs = pywt.wavedec(signal, 'db4', level=6, axis=0)
     cA6, cD6, cD5, cD4, cD3, cD2, cD1 = coeffs
     
     figure, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(nrows=6)
@@ -25,4 +26,25 @@ def pltWavCoeffs(signal):
     
     ax6.plot(cD2)
     ax6.set_title('cD2')
+
+
+
+
+    plt.show()
+
+
+def pltChannels(channels):
+    fig, axes = plt.subplots(nrows=3, ncols=1)
+    axes[0].plot(channels[0])
+    axes[1].plot(channels[1])
+    axes[2].plot(channels[2])
+    plt.show()
+
+
+pltChannels(sio.loadmat('negatives_test/280_20563.mat')["d"])
+pltWavCoeffs(sio.loadmat('negatives_test/280_20563.mat')["d"][1])
+
+
+
+
 
